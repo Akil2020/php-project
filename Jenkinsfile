@@ -10,6 +10,10 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
+                    sh 'docker stop phpwebapp'
+                    sh 'docker rm phpwebapp'
+                    sh 'docker rmi akil1991/phpappimage:v1'
+                    sh 'docker rmi $(docker images -q)
                     sh 'docker build -t akil1991/phpappimage:v1 .'
                     sh 'docker images'
                 }
